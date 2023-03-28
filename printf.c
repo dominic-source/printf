@@ -10,8 +10,8 @@ int _printf(const char *format, ...)
 va_list arg;
 int i = 0, count = 0;
 char t;
-if (format != NULL)
-{
+if (format == NULL)
+return (-1);
 va_start(arg, format);
 while (format[i] != '\0')
 {
@@ -43,9 +43,6 @@ count++;
 i++;
 }
 va_end(arg);
-}
-else
-return (1);
 return (count);
 }
 
