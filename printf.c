@@ -8,7 +8,7 @@
 int _printf(char *str, ...)
 {
 va_list arg;
-int i = 0, int count = 0;
+int i = 0, count = 0;
 char t;
 va_start(arg, str);
 while (str[i] != '\0')
@@ -19,7 +19,7 @@ t = str[++i];
 if (t == 'u' || t == 'x' || t == 'X' || t == 'o')
 args_uint_p(va_arg(arg, unsigned int), t, &count);
 else if (t == 'd' || t == 'i')
-args_int_p(va_arg(arg, int), t, &count)
+args_int_p(va_arg(arg, int), t, &count);
 else if (t == '%')
 args_p(&count);
 else if (t == 's')
@@ -29,7 +29,7 @@ count += chr_p((char)va_arg(arg, int));
 else
 {
 _putchar('%');
-_putchar(str[++i]);
+_putchar(str[i]);
 count += 2;
 }
 }
@@ -82,10 +82,10 @@ void args_int_p(int v, char c, int *count)
 switch (c)
 {
 case 'd':
-*count += deci_p(va_arg(arg, int));
+*count += deci_p(v);
 break;
 case 'i':
-*count += int_p(va_arg(arg, int));
+*count += int_p(v);
 break;
 }
 }

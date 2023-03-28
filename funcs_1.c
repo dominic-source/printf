@@ -1,5 +1,6 @@
 #include <unistd.h>
-
+#include <string.h>
+#include "main.h"
 /**
  * _putchar - print characters
  * @c: characters
