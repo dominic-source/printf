@@ -1,0 +1,92 @@
+#include <stddef.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+/**
+ * tostring - converts integers to string
+ * Return: pointer to char
+ * @num: integer number
+ */
+char *tostring(int num)
+{
+char *p_str;
+int i, rem, len = 0, start = 0;
+unsigned int n;
+int pos = 1;
+
+if (num < 0)
+{
+start = 1;
+num *= -1;
+pos = 0;
+}
+
+n = num;
+
+while (n != 0)
+{
+len++;
+n /= 10;
+}
+
+p_str = malloc(sizeof(char) * (len  + 1 + start));
+if (p_str == NULL)
+return (NULL);
+
+if (start)
+p_str[0] = '-';
+
+for (i = start; i < (len + start); i++)
+{
+
+rem = num % 10;
+num = num / 10;
+
+p_str[len - i + start - pos] = '0' + rem;
+
+}
+p_str[len + start] = '\0';
+
+return (p_str);
+}
+
+
+/**
+ * tohex_oct - convert unsigned integers to hexadecimal
+ * @i: unsigned integer
+ * @c: character
+ * @base: base for conversion
+ * Return: pointer to a string
+ */
+char *tohex_oct(unsigned int i, char c, unsigned int base)
+{
+char *hex_ptr;
+unsigned int p = i;
+int rem, int count = 0;
+
+while (p != 0)
+{
+p /= base;
+count++;
+}
+hex_ptr = malloc(sizeof(char) * (count + 1));
+if (hex_ptr == NULL)
+return (NULL);
+hex_ptr[count] = '\0';
+while (i != 0)
+{
+rem  = i % base;
+if (rem < 10)
+hex_ptr[--count] = rem + 48;
+else
+{
+if (c == 'x')
+ex_ptr[--count] = rem + 87;
+else
+hex_ptr[--count] = rem + 55;
+}
+i /= base;
+}
+return (hex_ptr);
+}
