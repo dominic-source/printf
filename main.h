@@ -1,7 +1,8 @@
 #ifndef MAIN
 #define MAIN
 #include <stdarg.h>
-int _printf(char *s, ...);
+#include <stddef.h>
+int _printf(const char *format, ...);
 char *tostring(int num);
 char *tostring_u(unsigned int num);
 char *tohex_oct(unsigned int num, char c, unsigned int base);

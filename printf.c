@@ -2,20 +2,22 @@
 
 /**
  * _printf - prints string
- * @str: pointer to the string to print
+ * @format: pointer to the string to print
  * Return: length of string
  */
-int _printf(char *str, ...)
+int _printf(const char *format, ...)
 {
 va_list arg;
 int i = 0, count = 0;
 char t;
-va_start(arg, str);
-while (str[i] != '\0')
+if (format != NULL)
 {
-if (str[i] == '%')
+va_start(arg, format);
+while (format[i] != '\0')
 {
-t = str[++i];
+if (format[i] == '%')
+{
+t = format[++i];
 if (t == 'u' || t == 'x' || t == 'X' || t == 'o')
 args_uint_p(va_arg(arg, unsigned int), t, &count);
 else if (t == 'd' || t == 'i')
@@ -29,18 +31,21 @@ count += chr_p((char)va_arg(arg, int));
 else
 {
 _putchar('%');
-_putchar(str[i]);
+_putchar(format[i]);
 count += 2;
 }
 }
 else
 {
-_putchar(str[i]);
+_putchar(format[i]);
 count++;
 }
 i++;
 }
 va_end(arg);
+}
+else
+return (1);
 return (count);
 }
 
