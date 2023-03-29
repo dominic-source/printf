@@ -34,8 +34,8 @@ _putchar('%');
 _putchar(format[i]);
 count += 2;
 }
-else if (t == '\0') 
-_putchar('\0');
+else if (t == '\0')
+return (-1);
 }
 else
 {
