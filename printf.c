@@ -34,7 +34,11 @@ _putchar(format[i]);
 count += 2;
 }
 else if (t == '\0')
+<<<<<<< HEAD
 _putchar('\0');
+=======
+return (-1);
+>>>>>>> 2c3e11c6c3ffd6110fa84db71d0e084385487e0a
 }
 else
 {
