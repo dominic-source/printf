@@ -28,7 +28,7 @@ else if (t == 's')
 count += str_p(va_arg(arg, char *));
 else if (t == 'c')
 count += chr_p((char)va_arg(arg, int));
-else
+else if (t != '\0')
 {
 _putchar('%');
 _putchar(format[i]);
