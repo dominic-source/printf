@@ -1,6 +1,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "main.h"
+#include <stdlib.h>
 /**
  * _putchar - print characters
  * @c: characters
@@ -22,10 +23,11 @@ int uns_hex_p(unsigned int i, char c)
 {
 int j = 0;
 char *s = tohex_oct(i, c, 16);
-
+int len = strlen(s);
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s));
+free(s);
+return (len);
 }
 
 
@@ -41,5 +43,6 @@ char c = 'o';
 char *s = tohex_oct(deci_n, c, 8);
 while (s[j] != '\0')
 _putchar(s[j++]);
+free(s);
 return (strlen(s));
 }

@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - prints string
  * @format: pointer to the string to print
@@ -34,7 +33,7 @@ _putchar('%');
 _putchar(format[i]);
 count += 2;
 }
-else if (t == '\0') 
+else if (t == '\0')
 _putchar('\0');
 }
 else

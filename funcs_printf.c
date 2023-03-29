@@ -41,11 +41,27 @@ return (strlen(s));
 
 int int_p(int i)
 {
-int p = 0;
-char *s = tostring(i);
+int p = 0, t = 0, len;
+char *s;
+unsigned int j;
+
+if (i < 0)
+{
+j = -i;
+t = 1;
+}
+else
+j = i;
+s = tostring_u(j);
+len = strlen(s) + p;
+
+if (t)
+_putchar('-');
+
 while (s[p] != '\0')
 _putchar(s[p++]);
-return (strlen(s));
+free(s);
+return (len);
 }
 
 /**
@@ -56,12 +72,26 @@ return (strlen(s));
 
 int deci_p(int i)
 {
-int j = 0;
-char *s = tostring(i);
+int j = 0, t = 0, len;
+char *s;
+unsigned int k;
+if (i < 0)
+{
+k = -i;
+t = 1;
+}
+else
+k = i;
+s = tostring_u(k);
+len = strlen(s);
+
+if (t)
+_putchar('-');
 
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s));
+free(s);
+return (len);
 }
 
 /**
@@ -74,9 +104,9 @@ int uns_int_p(unsigned int i)
 {
 int j = 0;
 char *s = tostring_u(i);
-
+int len = strlen(s);
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s));
+free(s);
+return (len);
 }
-

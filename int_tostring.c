@@ -6,28 +6,29 @@
 /**
  * tostring - converts integers to string
  * Return: pointer to char
- * @num: integer number
+ * @n: integer number
  */
-char *tostring(int num)
+char *tostring(int n)
 {
 char *p_str;
 int i, rem, len = 0, start = 0;
-unsigned int n;
+int num, count = n;
 int pos = 1;
 
-if (num < 0)
+num = n;
+if (n < 0)
 {
 start = 1;
-num *= -1;
+num = -n;
 pos = 0;
 }
 
-n = num;
 
-while (n != 0)
+
+while (count != 0)
 {
 len++;
-n /= 10;
+count /= 10;
 }
 
 p_str = malloc(sizeof(char) * (len  + 1 + start));
