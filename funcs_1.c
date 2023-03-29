@@ -25,7 +25,7 @@ char *s = tohex_oct(i, c, 16);
 
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }
 
 
@@ -41,5 +41,5 @@ char c = 'o';
 char *s = tohex_oct(deci_n, c, 8);
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }

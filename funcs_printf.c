@@ -28,7 +28,7 @@ int str_p(char *s)
 int i = 0;
 while (s[i] != '\0')
 _putchar(s[i++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }
 
 /**
@@ -43,7 +43,7 @@ int p = 0;
 char *s = tostring(i);
 while (s[p] != '\0')
 _putchar(s[p++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }
 
 /**
@@ -59,7 +59,7 @@ char *s = tostring(i);
 
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }
 
 /**
@@ -75,6 +75,6 @@ char *s = tostring_u(i);
 
 while (s[j] != '\0')
 _putchar(s[j++]);
-return (strlen(s) - 1);
+return (strlen(s));
 }
 
