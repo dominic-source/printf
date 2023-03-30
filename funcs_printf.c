@@ -53,7 +53,7 @@ t = 1;
 else
 j = i;
 s = tostring_u(j);
-len = strlen(s) + p;
+len = strlen(s) + t;
 
 if (t)
 _putchar('-');
@@ -83,7 +83,7 @@ t = 1;
 else
 k = i;
 s = tostring_u(k);
-len = strlen(s);
+len = strlen(s) + t;
 
 if (t)
 _putchar('-');
