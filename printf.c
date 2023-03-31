@@ -7,8 +7,8 @@
 int _printf(const char *format, ...)
 {
 va_list arg;
-int i = 0, count = 0;
-char t;
+int i = 0, count = 0, c = count;
+char t, z;
 if (format == NULL)
 return (-1);
 va_start(arg, format);
@@ -17,14 +17,15 @@ while (format[i] != '\0')
 if (format[i] == '%')
 {
 t = format[++i];
-if (t == 'u' || t == 'x' || t == 'X' || t == 'o')
-args_uint_p(va_arg(arg, unsigned int), t, &count);
-else if (t == 'd' || t == 'i')
-args_int_p(va_arg(arg, int), t, &count);
+z = format[i + 1];
+if (t == 'u' || t == 'x' || t == 'X' || t == 'o' || t == 'b')
+args_uint_p(va_arg(arg, unsigned int), t, &c);
+else if (t == 'd' || t == 'i' || t == 'l' || t == 'h')
+a_int_p(va_arg(arg, long), t, &c, (t == 'l' || t == 'h' ? format[++i] : z));
 else if (t == '%')
-args_p(&count);
-else if (t == 's')
-count += str_p(va_arg(arg, char *));
+args_p(&c);
+else if (t == 's' || t == 'S')
+count += str_p(va_arg(arg, char *), t);
 else if (t == 'c')
 count += chr_p((char)va_arg(arg, int));
 else if (t != '\0')
@@ -70,25 +71,35 @@ break;
 case 'o':
 *count += uns_oct_p(v);
 break;
+case 'b':
+*count += uns_bin_p(v);
+break;
 }
 }
 
 /**
- * args_int_p - prints the variadic argument
+ * a_int_p - prints the variadic argument
  * @v: unsigned interger variable
  * @c: string
+ * @s: for long or short
  * @count: pointer to the count
  * Return: Nothing
  */
-void args_int_p(int v, char c, int *count)
+void a_int_p(long int v, char c, int *count, char s)
 {
 switch (c)
 {
 case 'd':
-*count += deci_p(v);
+*count += deci_p((int)v);
 break;
 case 'i':
-*count += int_p(v);
+*count += int_p((int)v);
+break;
+case 'l':
+*count += lng_sht_p(v, s, 'l');
+break;
+case 'h':
+*count += lng_sht_p(v, s, 'h');
 break;
 }
 }

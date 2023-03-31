@@ -4,56 +4,6 @@
 #include <string.h>
 
 /**
- * tostring - converts integers to string
- * Return: pointer to char
- * @n: integer number
- */
-char *tostring(int n)
-{
-char *p_str;
-int i, rem, len = 0, start = 0;
-int num, count = n;
-int pos = 1;
-
-num = n;
-if (n < 0)
-{
-start = 1;
-num = -n;
-pos = 0;
-}
-
-
-
-while (count != 0)
-{
-len++;
-count /= 10;
-}
-
-p_str = malloc(sizeof(char) * (len  + 1 + start));
-if (p_str == NULL)
-return (NULL);
-
-if (start)
-p_str[0] = '-';
-
-for (i = start; i < (len + start); i++)
-{
-
-rem = num % 10;
-num = num / 10;
-
-p_str[len - i + start - pos] = '0' + rem;
-
-}
-p_str[len + start] = '\0';
-
-return (p_str);
-}
-
-
-/**
  * tostring_u - converts integers to string
  * Return: pointer to char
  * @num: unsigned integer number
