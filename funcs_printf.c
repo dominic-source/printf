@@ -118,6 +118,8 @@ _putchar('-');
 while (s[j] != '\0')
 _putchar(s[j++]);
 free(s);
+
+ printf("----- i am for testing ---%i----", len);
 return (len);
 }
 
