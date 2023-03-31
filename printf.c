@@ -21,7 +21,7 @@ z = format[i];
 if (t == 'u' || t == 'x' || t == 'X' || t == 'o' || t == 'b')
 args_uint_p(va_arg(arg, unsigned int), t, &c);
 else if (t == 'd' || t == 'i' || t == 'l' || t == 'h')
-a_int_p(va_arg(arg, long), t, &c, (t == 'l' || t == 'h' ? format[++i] : z));
+a_int_p(va_arg(arg, int), t, &c, (t == 'l' || t == 'h' ? format[++i] : z));
 else if (t == '%')
 args_p(&c);
 else if (t == 's' || t == 'S')
@@ -90,10 +90,10 @@ void a_int_p(long int v, char c, int *count, char s)
 switch (c)
 {
 case 'd':
-*count += deci_p((int)v);
+*count += deci_p(v);
 break;
 case 'i':
-*count += int_p((int)v);
+*count += int_p(v);
 break;
 case 'l':
 *count += lng_sht_p(v, s, 'l');
@@ -112,5 +112,5 @@ break;
 void args_p(int *count)
 {
 _putchar('%');
-++(*count);
+*count += 1;
 }
