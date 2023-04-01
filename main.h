@@ -20,5 +20,5 @@ void a_int_p(long int v, char c, int *count, char s);
 void args_uint_p(unsigned int v, char c, int *count);
 void args_p(int *count);
 void unprint_print(char);
-char *ini_lh(unsigned int *base, char *t, unsigned int *len, long int *num, char *p_str);
+char *ini_lh(unsigned int *, char *, unsigned int *, long int *, char *);
 #endif
